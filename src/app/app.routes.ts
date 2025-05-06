@@ -15,6 +15,7 @@
  */
 
 import { Routes } from '@angular/router';
+import { DashboardPageComponent } from './features/dashboard/pages/dashboard-page/dashboard-page.component';
 
 export const routes: Routes = [
     // --- Redirección por Defecto ---
@@ -29,10 +30,26 @@ export const routes: Routes = [
         pathMatch: 'full'         
     },
 
-    // --- Platzhalter para Rutas de Funcionalidades (Lazy Loading) ---
     // Aquí es donde se conectarán las rutas de los diferentes módulos 'feature'.
     // Se usa 'loadChildren' para carga perezosa (mejora el rendimiento inicial).
-    // Ejemplo comentado! (añadir las rutas de los módulos correspondientes aqui):
+    //(añadir las rutas de los módulos correspondientes aqui):
+    
+    {
+        path: 'dashboard',
+        component: DashboardPageComponent
+      },
+    
+    {
+        // Esta será la URL base para acceder a la funcionalidad de tareas (ej: http://localhost:4200/tasks)
+        path: 'tasks', 
+        // Apunta al archivo de rutas del feature
+        // 'm' es el módulo cargado, accedemos a la constante TASKS_ROUTES exportada
+        loadChildren: () => import('./features/tasks/tasks.routes') 
+                             .then(m => m.TASKS_ROUTES) ,
+        // título base para las rutas hijas de este feature
+        title: 'Mis Tareas' 
+    }
+    
     /*
     {
         // Ejemplo: para autenticación
@@ -50,9 +67,7 @@ export const routes: Routes = [
     */
 
     // --- Ruta Comodín (Wildcard) para 404 - Página no encontrada ---
-    // Es una buena práctica tener una ruta que capture cualquier URL no definida.
     // Esta ruta debería ir al final del array.
-    // Ejemplo comentado (requiere crear un componente NotFoundComponent):
     /*
     {
         path: '**', // El doble asterisco coincide con cualquier ruta no encontrada antes.

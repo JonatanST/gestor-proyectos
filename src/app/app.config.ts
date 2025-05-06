@@ -13,13 +13,14 @@
  * @ previstas en la Ley.
  * @ 
  */
+
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes'; 
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    // proveedor de deteccion de cambios con fusión de eventos en 'true'
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
 

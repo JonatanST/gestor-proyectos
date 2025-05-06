@@ -32,17 +32,20 @@ export const routes: Routes = [
     // --- Platzhalter para Rutas de Funcionalidades (Lazy Loading) ---
     // Aquí es donde se conectarán las rutas de los diferentes módulos 'feature'.
     // Se usa 'loadChildren' para carga perezosa (mejora el rendimiento inicial).
-    // Ejemplo comentado (el desarrollador añadirá las suyas aquí):
+    // Ejemplo comentado! (añadir las rutas de los módulos correspondientes aqui):
     /*
     {
-        path: 'auth', // Ejemplo: para autenticación
+        // Ejemplo: para autenticación
+        path: 'auth', 
         loadChildren: () => import('./features/auth/auth.routes')
-                             .then(m => m.AUTH_ROUTES) // Asegúrate que el archivo exporte las rutas con este nombre
+                             .then(m => m.AUTH_ROUTES)
     },
     {
-        path: 'dashboard', // Ejemplo: para el panel principal
+        // Ejemplo: para el panel principal
+        path: 'dashboard', 
+        // Ejemplo cargando solo un componente standalone
         loadComponent: () => import('./features/dashboard/pages/dashboard-page/dashboard-page.component')
-                              .then(m => m.DashboardPageComponent) // Ejemplo cargando solo un componente standalone
+                              .then(m => m.DashboardPageComponent) 
     },
     */
 

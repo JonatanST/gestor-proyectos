@@ -13,7 +13,9 @@
  * @ previstas en la Ley.
  * @ 
  */
-import { Component } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
+import { LoggerService } from '../../../../core/services/logger.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -22,6 +24,14 @@ import { Component } from '@angular/core';
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'
 })
-export class DashboardPageComponent {
 
+export class DashboardPageComponent  implements OnInit {
+  // Angular ve que el constructor pide un LoggerService.
+  // Como lo proveímos en app.config.ts, Angular le pasa la instancia singleton.
+  constructor(private readonly logger: LoggerService) {}
+
+  ngOnInit(): void {
+    this.logger.log('DashboardPageComponent initialized');
+    this.logger.warn('Advertencia de ejemplo desde el dashboard.');
+  }
 }

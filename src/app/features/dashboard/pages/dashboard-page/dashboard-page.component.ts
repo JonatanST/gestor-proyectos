@@ -24,7 +24,6 @@ import { LoggerService } from '../../../../core/services/logger.service';
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss',
 })
-
 export class DashboardPageComponent implements OnInit {
   // Angular ve que el constructor pide un LoggerService.
   // Como lo proveímos en app.config.ts, Angular le pasa la instancia singleton.

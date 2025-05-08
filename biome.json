@@ -15,7 +15,8 @@
         "noConsole": "warn"
       },
       "style": {
-        "useNamingConvention": "error"
+        "useNamingConvention": "error",
+        "useImportType": "off"
       }
     }
   },

@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "lint:fix": "biome check --apply-unsafe ."
   },
   "private": true,
   "dependencies": {

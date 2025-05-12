@@ -14,3 +14,4 @@
   * @FilePath: 
  */
 
+// Define variables de configuración para el entorno de producción

@@ -14,4 +14,4 @@
   * @FilePath: 
  */
 
-// se almacenan las variables de entorno para la aplicación Angular.
+// Define variables de configuración para el entorno de desarrollo

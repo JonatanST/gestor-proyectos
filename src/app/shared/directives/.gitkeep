@@ -1,0 +1,4 @@
+# Aquí se colocarán las Directivas Standalone Reutilizables. 
+# Estas directivas añaden comportamiento o modifican la apariencia de los elementos del DOM y están diseñadas para 
+# ser usadas en múltiples features o componentes no relacionados. 
+# Deben ser importadas en el array imports de los componentes standalone que las utilicen.

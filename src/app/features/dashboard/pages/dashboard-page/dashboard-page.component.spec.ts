@@ -21,6 +21,9 @@ import { LoggerService } from '../../../../core/services/logger.service';
 // Importa el componente standalone que vamos a probar
 import { DashboardPageComponent } from './dashboard-page.component';
 
+import { By } from '@angular/platform-browser';
+import { CustomButtonComponent } from '../../../../shared/components/custom-button/custom-button.component';
+
 // Crear un mock simple para LoggerService
 // Los métodos están vacíos porque no necesitamos que hagan nada real, solo necesitamos poder espiarlos.
 class MockLoggerService {
@@ -88,5 +91,29 @@ describe('DashboardPageComponent', () => {
     expect(mockLoggerService.warn).toHaveBeenCalledWith(
       'Advertencia de ejemplo desde el dashboard.'
     );
+  });
+
+  it('should call handleDashboardButtonClick and log when app-custom-button is clicked', () => {
+    // Espía el método del componente que se va a llamar
+    spyOn(component, 'handleDashboardButtonClick').and.callThrough();
+    // Espía el método del logger que se espera que llame el handler
+    spyOn(mockLoggerService, 'log'); // Asumiendo que mockLoggerService ya está disponible
+
+    // Encuentra el app-custom-button. Puedes buscar por el tag o por una clase/id si lo tuviera.
+    // Usaremos el tipo de directiva para ser más precisos
+    const customButtonDebugElement = fixture.debugElement.query(
+      By.directive(CustomButtonComponent)
+    );
+
+    // Simula la emisión del evento 'buttonClick' desde el CustomButtonComponent
+    // Pero emitir el output es más directo para probar la conexión:
+    customButtonDebugElement.triggerEventHandler('buttonClick', {
+      /* mock MouseEvent si es necesario */
+    });
+
+    fixture.detectChanges(); // Actualiza si el handler cambia algo en la vista
+
+    expect(component.handleDashboardButtonClick).toHaveBeenCalled();
+    expect(mockLoggerService.log).toHaveBeenCalledWith('¡Botón del Dashboard clickeado!');
   });
 });

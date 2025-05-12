@@ -45,5 +45,32 @@ describe('LoggerService', () => {
     expect(console.log).toHaveBeenCalledWith(`[INFO]: ${message}`);
   });
 
-  // Pruebas similares para warn y error...
+  // Prueba para el método warn
+  it('should call console.warn with WARN prefix', () => {
+    spyOn(console, 'warn');
+    const message = 'Test warn';
+    service.warn(message);
+    expect(console.warn).toHaveBeenCalledWith(`[WARN]: ${message}`);
+  });
+
+  // prueba para el metodo error
+  it('should call console.error with ERROR prefix when error argument is provided', () => {
+    spyOn(console, 'error');
+    const message = 'Test error with object';
+    // Creamos un objeto de error
+    const errObj = new Error('Actual error');
+    // LLAMAMOS CON EL OBJETO DE ERROR
+    service.error(message, errObj);
+    // Verificamos que se usó el objeto
+    expect(console.error).toHaveBeenCalledWith(`[ERROR]: ${message}`, errObj);
+  });
+
+  it('should call console.error with ERROR prefix and empty string when no error argument is provided', () => {
+    spyOn(console, 'error');
+    const message = 'Test error without object';
+    // Llamamos al segundo argumento (error será undefined)
+    service.error(message);
+    // Verificamos que se usó la cadena vacía
+    expect(console.error).toHaveBeenCalledWith(`[ERROR]: ${message}`, '');
+  });
 });

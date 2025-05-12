@@ -1,59 +1,168 @@
-# ScaffoldAngular19
+# Scaffold Angular 19 - GRUPO ASD
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+Un punto de partida robusto y bien estructurado para iniciar proyectos Angular (v19+) utilizando componentes standalone, TypeScript, SCSS, el Router de Angular, Karma/Jasmine para pruebas y Biome para formateo/linting. Sigue una arquitectura modular orientada a features.
 
-## Development server
+## ✨ Características Principales
 
-To start a local development server, run:
+* 🧩 **Angular (v19+):** Framework moderno con arquitectura de componentes standalone.
+* 🟦 **TypeScript:** Tipado estático para mejorar la mantenibilidad y reducir errores.
+* 🎨 **SCSS:** Preprocesador CSS para estilos más potentes y organizados.
+* 🧭 **Angular Router:** Enrutamiento declarativo y funcional para SPAs.
+* 🧪 **Karma & Jasmine:** Framework y ejecutor de pruebas estándar en Angular para pruebas unitarias y de componentes.
+* 🐶 **Biome:** Formateador y linter de código integrado y de alto rendimiento (configuración en `biome.json`).
+* 📡 **Angular HttpClient:** Para realizar peticiones HTTP (se configura en `app.config.ts` con `provideHttpClient()`).
+* 📂 **Arquitectura Modular:** Estructura de carpetas organizada por `core`, `features` y `shared`.
 
-```bash
-ng serve
+🔗 **Ver:** `_docs/01-technologies.md` para una explicación profunda de las herramientas.
+
+## 📂 Estructura del Proyecto
+
+La estructura principal del proyecto está diseñada para la escalabilidad y mantenibilidad:
+
+```
+├── _docs/                     # Documentación detallada del scaffold
+├── coverage/                  # Reportes de cobertura de pruebas (generado por 'npm run test:ci')
+├── node_modules/              # Dependencias del proyecto
+├── public/                    # Archivos estáticos servidos directamente (ej. favicon.ico)
+├── src/
+│   ├── app/
+│   │   ├── core/              # Servicios singleton, guards, interceptors globales
+│   │   │   ├── guards/        # (Placeholder con .gitkeep)
+│   │   │   ├── interceptors/  # (Placeholder con .gitkeep)
+│   │   │   └── services/      # (Ej: LoggerService)
+│   │   ├── features/          # Funcionalidades principales de la aplicación (lazy-loaded)
+│   │   │   ├── dashboard/     # Ejemplo de una feature
+│   │   │   └── tasks/         # Ejemplo de otra feature
+│   │   ├── shared/            # Componentes, directivas, pipes (standalone) reutilizables
+│   │   │   ├── components/    # (Ej: CustomButtonComponent)
+│   │   │   ├── directives/    # (Placeholder con .gitkeep)
+│   │   │   └── pipes/         # (Placeholder con .gitkeep)
+│   │   ├── app.component.html # Plantilla HTML del componente raíz
+│   │   ├── app.component.scss # Estilos del componente raíz
+│   │   ├── app.component.spec.ts # Pruebas del componente raíz
+│   │   ├── app.component.ts   # Lógica del componente raíz (standalone)
+│   │   ├── app.config.ts      # Configuración principal de la aplicación (providers, router)
+│   │   └── app.routes.ts      # Definición de rutas principales de la aplicación
+│   ├── assets/                # Archivos estáticos (imágenes, fuentes, etc.)
+│   │   ├── fonts/           # (Placeholder con .gitkeep)
+│   │   └── images/          # (Placeholder con .gitkeep)
+│   ├── environments/          # Archivos de configuración por entorno
+│   │   ├── environment.prod.ts
+│   │   └── environment.ts     # (o environment.development.ts)
+│   ├── index.html             # Plantilla HTML raíz que carga la aplicación
+│   ├── main.ts                # Punto de entrada de la aplicación (bootstrap)
+│   └── styles.scss            # Estilos globales
+├── .editorconfig              # Configuración de estilo para editores
+├── .gitignore                 # Archivos y carpetas ignorados por Git
+├── angular.json               # Configuración del workspace y proyecto Angular (CLI)
+├── biome.json                 # Configuración de Biome (linter/formatter)
+├── LICENSE                    # Licencia del proyecto (GRUPO ASD S.A.S.)
+├── package-lock.json          # Lockfile de versiones exactas de dependencias
+├── package.json               # Dependencias y scripts del proyecto
+├── tsconfig.app.json          # Configuración de TypeScript para la aplicación
+├── tsconfig.json              # Configuración base de TypeScript
+└── tsconfig.spec.json         # Configuración de TypeScript para las pruebas
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* **`src/app/core`**: Lógica y servicios transversales, de instancia única.
+* **`src/app/features`**: Módulos autocontenidos por funcionalidad, cargados perezosamente.
+* **`src/app/shared`**: Elementos standalone reutilizables (componentes, directivas, pipes).
 
-## Code scaffolding
+🔗 **Ver:** `_docs/02-architecture.md` para una explicación profunda de la estructura.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🚀 Guía de Inicio Rápido
 
-```bash
-ng generate component component-name
+**Prerrequisitos:**
+
+| Tecnología     | Versión                                  |
+| :------------- | :---------------------------------------------------- |
+| Node.js        | v22.14.0                            |
+| npm            | 10.9.2          |
+| Angular CLI    | 19.2.10 |
+
+**Pasos:**
+
+1.  **Clonar el repositorio (o usar como plantilla):**
+    ```bash
+    # git clone https://github.com/Grupo-ASD/NOMBRE_REPOSITORIO.git
+    # cd NOMBRE_REPOSITORIO
+    ```
+
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+
+3.  **Ejecutar Servidor de Desarrollo:**
+    ```bash
+    npm start
+    ```
+    Abre tu navegador en `http://localhost:4200/`.
+
+4.  **Comandos Útiles (Scripts de `package.json`):**
+    * `npm start` o `ng serve`: Inicia el servidor de desarrollo.
+    * `npm run build`: Compila la aplicación para producción.
+    * `npm test`: Ejecuta las pruebas unitarias/componentes con Karma/Jasmine (abre un navegador).
+    * `npm run test:ci`: Ejecuta pruebas para CI (headless, una sola ejecución, con cobertura).
+    * `npm run format`: Formatea todo el código con Biome.
+    * `npm run lint`: Revisa el código con Biome (sin aplicar cambios).
+    * `npm run lint:fix`: Revisa y aplica arreglos automáticos con Biome.
+
+## 🎨 Estilo y Convenciones de Código (Biome)
+
+Este proyecto utiliza **Biome** para formateo y linting, asegurando un código limpio y consistente.
+* La configuración se encuentra en `biome.json`.
+* Se recomienda instalar la extensión "Biome" para tu editor (VS Code/Cursor) para formateo al guardar y feedback en tiempo real.
+* Utiliza los scripts `npm run format`, `npm run lint` y `npm run lint:fix` para aplicar y verificar las reglas desde la terminal..
+
+🔗 **Ver:** `_docs/03-linting-formatting.md` para detalles de la configuración y uso de Biome.
+
+## 🛠️ Desarrollo de Funcionalidades y Componentes
+
+### 1. Añadir una Nueva Funcionalidad (Feature) 
+
+**En la terminal ejecutar:**
+   
+ ```bash
+ng generate component features/nombre-de-tu-feature/pages/nombre-de-tu-pagina
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 2. Añadir un Componente Compartido (Shared)
 
-```bash
-ng generate --help
+**En la terminal ejecutar:**
+   
+ ```bash
+ng generate component shared/components/nombre-tu-componente --standalone
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
+### 3. Añadir un Servicio Core (Singleton)
+**En la terminal ejecutar:**
+   
+ ```bash
+ng generate service core/services/nombre-tu-servicio
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+🔗 **Ver:** `_docs/03-architecture.md` para una explicación más detallada de la creacion de `features`, `Components`, `shared`, `core`, etc.
 
-## Running unit tests
+## 🧪 Pruebas
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+* **Frameworks:** Karma (ejecutor) y Jasmine (biblioteca de aserciones).
+* **Utilidades:** `@angular/core/testing` (`TestBed`, `ComponentFixture`) para pruebas de componentes.
+* **Ubicación:** Archivos `.spec.ts` co-localizados con el código que prueban.
+* **Ejecución:** `npm test` (desarrollo) y `npm run test:ci` (integración continua, con reporte de cobertura en `coverage/`).
 
-```bash
-ng test
-```
+🔗 **Ver:** `_docs/05-testing.md`
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
+## ⚙️ Variables de Entorno
 
-```bash
-ng e2e
-```
+* Utiliza los archivos en `src/environments/` (`environment.ts`, `environment.prod.ts`).
+* Angular CLI gestiona el reemplazo de archivos según la configuración de build.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+🔗 **Ver:** `_docs/07-environment-variables.md`
 
-## Additional Resources
+## 📄 Licencia
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Este proyecto se distribuye bajo los términos de la licencia corporativa de **GRUPO ASD S.A.S.**
+Revisa el archivo `LICENSE` para más detalles.
+Copyright (c) 2025, GRUPO ASD S.A.S. Todos los derechos reservados.

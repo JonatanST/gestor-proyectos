@@ -13,6 +13,8 @@
   * previstas en la Ley.
   * @FilePath: 
  */
+
+// importa  métodos para interactuar con el componente y su DOM durante las pruebas
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 //Importamos los servicios que inyecta y provee mocks para ellos
 import { LoggerService } from '../../../../core/services/logger.service';
@@ -20,6 +22,7 @@ import { LoggerService } from '../../../../core/services/logger.service';
 import { DashboardPageComponent } from './dashboard-page.component';
 
 // Crear un mock simple para LoggerService
+// Los métodos están vacíos porque no necesitamos que hagan nada real, solo necesitamos poder espiarlos.
 class MockLoggerService {
   log(_message: string): void {
     /* Mock */
@@ -33,28 +36,30 @@ class MockLoggerService {
 }
 
 describe('DashboardPageComponent', () => {
+  //  representa el componente en sí, permitiendo acceder a sus propiedades y métodos.
   let component: DashboardPageComponent;
+  //  representa el entorno del componente, incluyendo su HTML renderizado.
   let fixture: ComponentFixture<DashboardPageComponent>;
-  let mockLoggerService: LoggerService; // Variable para guardar la instancia del mock
+  // guardamos la instancia del mock inyectado.
+  let mockLoggerService: LoggerService;
 
   beforeEach(async () => {
     // Configura el TestBed
     await TestBed.configureTestingModule({
-      // Para componentes standalone, se usa 'imports' en lugar de 'declarations'
       imports: [DashboardPageComponent],
       providers: [
         // Provee el mock en lugar del servicio real
         { provide: LoggerService, useClass: MockLoggerService },
       ],
-    }).compileComponents(); // Puede ser necesario si usas templateUrl/styleUrl
+    }).compileComponents(); // Puede ser necesario si se usa templateUrl/styleUrl
 
     // Crea el componente dentro del entorno de TestBed
     fixture = TestBed.createComponent(DashboardPageComponent);
     // Obtiene la instancia de la clase del componente
     component = fixture.componentInstance;
-    // Obtiene la instancia del mock que fue inyectada (opcional, pero útil)
+    // Obtiene la instancia del mock que fue inyectada
     mockLoggerService = TestBed.inject(LoggerService);
-    // Dispara la detección de cambios inicial para renderizar el HTML
+    // Dispara la detección de cambios inicial para renderizar el HTML y llama a los lifecycle hooks como ngOnInit
     fixture.detectChanges();
   });
 
@@ -63,25 +68,19 @@ describe('DashboardPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  // Verifica que el HTML renderizado contenga el texto esperado
   it('should display default message', () => {
-    // Verifica que el HTML renderizado contenga el texto esperado
+    // Accede al DOM renderizado
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('p')?.textContent).toContain('dashboard-page works!');
   });
 
   it('should call logger on init', () => {
-    // Espía el método 'log' del mock ANTES de que ngOnInit se llame (o llámalo de nuevo)
-    // NOTA: ngOnInit ya se llamó en el fixture.detectChanges() del beforeEach.
-    // Para probarlo mejor, podríamos espiar antes de crear el componente o
-    // llamar ngOnInit explícitamente aquí (menos ideal) o refactorizar.
-    // Por simplicidad ahora, asumamos que queremos verificar si llamó al logger.
-    // Sería mejor espiar en el beforeEach ANTES de fixture.detectChanges si es posible,
-    // o espiar el mock directamente.
-
+    // Espía los métodos del mock para verificar que fueron llamados
     spyOn(mockLoggerService, 'log').and.callThrough(); // Espía el mock
     spyOn(mockLoggerService, 'warn').and.callThrough();
 
-    component.ngOnInit(); // Llama manualmente para asegurar (no siempre es la mejor práctica)
+    component.ngOnInit(); // Llamamos al método del ciclo de vida para asegurar
 
     expect(mockLoggerService.log).toHaveBeenCalledWith(
       'DashboardPageComponent se ha inicializado.'

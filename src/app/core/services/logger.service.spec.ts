@@ -23,14 +23,17 @@ describe('LoggerService', () => {
     // TestBed aquí se usa a veces solo para facilitar la inyección si el servicio tuviera dependencias,
     // pero para un servicio sin dependencias, podríamos hacer new LoggerService() directamente.
     TestBed.configureTestingModule({
-      providers: [LoggerService], // Provee el servicio real para esta prueba
+      // Provee el servicio real para esta prueba
+      providers: [LoggerService],
     });
-    service = TestBed.inject(LoggerService); // Obtiene la instancia del servicio
-    // O podríamos hacer: service = new LoggerService();
+    // Obtiene la instancia del servicio
+    service = TestBed.inject(LoggerService);
+    //service = new LoggerService();
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy(); // Verifica que el servicio se pudo crear/inyectar
+    // Verifica que el servicio se pudo crear/inyectar
+    expect(service).toBeTruthy();
   });
 
   it('should log messages using console.log', () => {

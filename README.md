@@ -13,7 +13,7 @@ Un punto de partida robusto y bien estructurado para iniciar proyectos Angular (
 * 📡 **Angular HttpClient:** Para realizar peticiones HTTP (se configura en `app.config.ts` con `provideHttpClient()`).
 * 📂 **Arquitectura Modular:** Estructura de carpetas organizada por `core`, `features` y `shared`.
 
-🔗 **Ver:** `_docs/01-technologies.md` para una explicación profunda de las herramientas.
+🔗 **Ver:** [`docs/02-technologies.md`](./_docs/02-technologies.md) para una explicación profunda de las herramientas.
 
 ## 📂 Estructura del Proyecto
 
@@ -68,7 +68,7 @@ La estructura principal del proyecto está diseñada para la escalabilidad y man
 * **`src/app/features`**: Módulos autocontenidos por funcionalidad, cargados perezosamente.
 * **`src/app/shared`**: Elementos standalone reutilizables (componentes, directivas, pipes).
 
-🔗 **Ver:** `_docs/02-architecture.md` para una explicación profunda de la estructura.
+🔗 **Ver:** [`docs/03-architecture.md`](./_docs/03-architecture.md) para una explicación más detallada de la estructura.
 
 ## 🚀 Guía de Inicio Rápido
 
@@ -113,9 +113,18 @@ La estructura principal del proyecto está diseñada para la escalabilidad y man
 Este proyecto utiliza **Biome** para formateo y linting, asegurando un código limpio y consistente.
 * La configuración se encuentra en `biome.json`.
 * Se recomienda instalar la extensión "Biome" para tu editor (VS Code/Cursor) para formateo al guardar y feedback en tiempo real.
-* Utiliza los scripts `npm run format`, `npm run lint` y `npm run lint:fix` para aplicar y verificar las reglas desde la terminal..
+* Utiliza los scripts para aplicar y verificar las reglas desde la terminal.:
 
-🔗 **Ver:** `_docs/03-linting-formatting.md` para detalles de la configuración y uso de Biome.
+    ```bash
+    npm run format
+    ```
+
+    ```bash
+    npm run lint
+    ```
+
+
+🔗 **Ver:** [`docs/06-ide-integration.md`](./_docs/06-ide-integration.md) para detalles de la configuración y uso de Biome.
 
 ## 🛠️ Desarrollo de Funcionalidades y Componentes
 
@@ -142,16 +151,20 @@ ng generate component shared/components/nombre-tu-componente --standalone
 ng generate service core/services/nombre-tu-servicio
 ```
 
-🔗 **Ver:** `_docs/03-architecture.md` para una explicación más detallada de la creacion de `features`, `Components`, `shared`, `core`, etc.
+🔗 **Ver:** [`docs/04-development-pattern.md`](./_docs/04-development-pattern.md) para una explicación más detallada de la creacion de `features`, `Components`, `shared`, `core`, etc.
 
 ## 🧪 Pruebas
 
 * **Frameworks:** Karma (ejecutor) y Jasmine (biblioteca de aserciones).
 * **Utilidades:** `@angular/core/testing` (`TestBed`, `ComponentFixture`) para pruebas de componentes.
 * **Ubicación:** Archivos `.spec.ts` co-localizados con el código que prueban.
-* **Ejecución:** `npm test` (desarrollo) y `npm run test:ci` (integración continua, con reporte de cobertura en `coverage/`).
+* **Ejecucion de pruebas**
 
-🔗 **Ver:** `_docs/05-testing.md`
+```Bash
+npm run test:ci
+```
+
+🔗 **Ver:** [`docs/05-testing-strategy.md`](./_docs/05-testing-strategy.md) para ver más detallado el proceso de pruebas.
 
 
 ## ⚙️ Variables de Entorno
@@ -159,7 +172,7 @@ ng generate service core/services/nombre-tu-servicio
 * Utiliza los archivos en `src/environments/` (`environment.ts`, `environment.prod.ts`).
 * Angular CLI gestiona el reemplazo de archivos según la configuración de build.
 
-🔗 **Ver:** `_docs/07-environment-variables.md`
+🔗 **Ver:** [`docs/07-environment-variables.md`](./_docs/07-environment-variables.md)
 
 ## 📄 Licencia
 

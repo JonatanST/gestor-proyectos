@@ -2,12 +2,28 @@
 
 Este documento describe las principales tecnologías, librerías y herramientas que conforman este scaffold de Angular, con enlaces a sus respectivas documentaciones oficiales para una consulta más profunda.
 
+## Tabla de Tecnologías y Versiones
+
+| Tecnología         | Versión recomendada |
+|--------------------|--------------------|
+| Angular            | 19.2.9             |
+| Angular CLI        | 19.2.10            |
+| TypeScript         | 5.7.3              |
+| RxJS               | 7.8.2              |
+| SCSS               | -                  |
+| Biome              | 1.9.4              |
+| Karma              | 6.4.4              |
+| Jasmine            | 5.6.0              |
+| Zone.js            | 0.15.0             |
+
+---
+
 ## Framework Principal y Herramientas de Construcción
 
 ### [Angular](https://angular.dev/)
 
 * **Rol:** Framework principal de la aplicación.
-* **Descripción:** Utilizamos Angular (v19+) para construir la interfaz de usuario y la lógica de la aplicación de forma estructurada y basada en componentes. Este scaffold utiliza la arquitectura de **componentes standalone**, que es el enfoque moderno para construir aplicaciones Angular sin la necesidad de NgModules para cada componente/directiva/pipe.
+* **Descripción:** Utilizamos Angular (v19+) para construir la interfaz de usuario y la lógica de la aplicación de forma estructurada y basada en componentes. Este scaffold utiliza la arquitectura de **componentes standalone**, el enfoque moderno para construir aplicaciones Angular sin la necesidad de NgModules para cada componente/directiva/pipe.
 * **Documentación:** [https://angular.dev/](https://angular.dev/)
 
 ### [Angular CLI](https://angular.dev/tools/cli)
@@ -90,3 +106,14 @@ Este documento describe las principales tecnologías, librerías y herramientas 
 * **Descripción:** Una dependencia de Angular que permite al framework detectar cuándo las operaciones asíncronas (como `setTimeout`, eventos DOM, XHR) han terminado, para saber cuándo debe ejecutar la detección de cambios y actualizar la vista. Se configura en `polyfills.ts` (o `polyfills` en `angular.json` para proyectos standalone).
 
 ---
+
+## Herramientas de Desarrollo Adicionales (si aplica)
+
+- **Cypress / Playwright:** Para pruebas end-to-end (E2E). [Cypress](https://www.cypress.io/) | [Playwright](https://playwright.dev/)
+- **Husky / Commitlint:** Para control de calidad en los commits y hooks de Git. [Husky](https://typicode.github.io/husky/) | [Commitlint](https://commitlint.js.org/)
+- **Integración continua:** Si el proyecto usa CI/CD (GitHub Actions, GitLab CI, etc.), consulta la documentación correspondiente.
+
+---
+
+**Nota:**  
+Para detalles sobre convenciones, patrones de arquitectura y configuración avanzada, consulta los otros documentos en la carpeta `_docs`.

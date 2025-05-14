@@ -1,5 +1,0 @@
-# Este directorio almacenará los HTTP Interceptors. 
-# Los interceptors son funciones (HttpInterceptorFn) que permiten interceptar y modificar las peticiones HTTP salientes o las respuestas HTTP entrantes. 
-# Son útiles para tareas como añadir tokens de autenticación a las cabeceras, registrar actividad de red, o manejar errores HTTP de forma global. 
-# Se registran en app.config.ts a través de provideHttpClient(withInterceptors([...]))
-

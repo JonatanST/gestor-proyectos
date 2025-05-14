@@ -1,3 +1,0 @@
-# Este directorio es para los Pipes Standalone Reutilizables. 
-# Los pipes se usan en las plantillas HTML para transformar datos antes de mostrarlos (ej. formatear fechas, monedas, filtrar listas). 
-# Deben ser importados en el array imports de los componentes standalone que los necesiten

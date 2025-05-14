@@ -91,13 +91,14 @@
               }
             ],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "karmaConfig": "karma.conf.js"
           },
           "configurations": {
             "ci": {
               "watch": false,
               "progress": false,
-              "browsers": "ChromeHeadless",
+              "browsers": "chromeHeadlessCi",
               "codeCoverage": true
             }
           }

@@ -129,6 +129,39 @@ ng test --configuration=ci
 
 ---
 
+## Instalación de Chrome Headless en Ubuntu (WSL)
+
+Para ejecutar las pruebas en modo headless en entornos Ubuntu (incluyendo WSL), es necesario tener instalado Google Chrome. Sigue estos pasos:
+
+1. **Descarga el paquete de instalación oficial:**
+    ```bash
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    ```
+
+2. **Instala el paquete (puede mostrar advertencias de dependencias):**
+    ```bash
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+    ```
+
+3. **Corrige las dependencias faltantes (esto instalará lo necesario automáticamente):**
+    ```bash
+    sudo apt --fix-broken install -y
+    ```
+
+4. **Limpia el archivo descargado (opcional):**
+    ```bash
+    rm google-chrome-stable_current_amd64.deb
+    ```
+
+5. **Ejecuta las pruebas en modo headless:**
+    ```bash
+    npm run test:ci
+    ```
+
+> Ahora, Karma debería detectar Chrome automáticamente y ejecutar las pruebas en modo headless sin problemas.
+
+---
+
 ## Cobertura de Código (Code Coverage)
 
 Mide qué porcentaje del código fuente es ejecutado por las pruebas.

@@ -1,0 +1,2 @@
+# Destinada a almacenar archivos de fuentes personalizadas (ej. .woff, .ttf, .otf) que la aplicación vaya a utilizar. 
+# Estas fuentes luego se referenciarían en los archivos CSS/SCSS globales o de componentes.

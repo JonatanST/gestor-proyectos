@@ -1,21 +1,12 @@
-/*
- Licencia: 
-  * Archivo: LICENSE
-  * Fecha: 2025
-  * Todos los derechos de propiedad intelectual e industrial sobre esta
-  * aplicacion son de propiedad exclusiva del GRUPO ASD S.A.S.
-  * Su uso, alteracion, reproduccion o modificacion sin el debido
-  * consentimiento por escrito de GRUPO ASD S.A.S. quedan totalmente prohibidos.
-  *
-  * Este programa se encuentra protegido por las disposiciones de la
-  * Ley 23 de 1982 y demas normas concordantes sobre derechos de autor y
-  * propiedad intelectual. Su uso no autorizado dara lugar a las sanciones
-  * previstas en la Ley.
-  * @FilePath: 
+/**
+ * Directivas Standalone Reutilizables
+ * 
+ * @description
+ * Este directorio contiene directivas Angular standalone que añaden comportamiento 
+ * o modifican la apariencia de los elementos del DOM. Estas directivas están diseñadas 
+ * para ser usadas en múltiples features o componentes no relacionados.
+ * 
+ * @usageNotes
+ * Las directivas standalone deben ser importadas en el array imports de los 
+ * componentes standalone que las utilicen.
  */
-/*
-# Aquí se colocarán las Directivas Standalone Reutilizables. 
-# Estas directivas añaden comportamiento o modifican la apariencia de los elementos del DOM y están diseñadas para 
-# ser usadas en múltiples features o componentes no relacionados. 
-# Deben ser importadas en el array imports de los componentes standalone que las utilicen.
-*/

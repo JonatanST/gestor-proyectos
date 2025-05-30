@@ -1,0 +1,19 @@
+{
+  // Establece Biome como formateador por defecto para TS y JS
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  // Opcional: Para JSON también
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    // Para JSON con comentarios (como tsconfig a veces)
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  //formatear automáticamente al guardar
+  "editor.formatOnSave": true
+}

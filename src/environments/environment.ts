@@ -1,17 +1,14 @@
-/*
- Licencia: 
-  * Archivo: LICENSE
-  * Fecha: 2025
-  * Todos los derechos de propiedad intelectual e industrial sobre esta
-  * aplicacion son de propiedad exclusiva del GRUPO ASD S.A.S.
-  * Su uso, alteracion, reproduccion o modificacion sin el debido
-  * consentimiento por escrito de GRUPO ASD S.A.S. quedan totalmente prohibidos.
-  *
-  * Este programa se encuentra protegido por las disposiciones de la
-  * Ley 23 de 1982 y demas normas concordantes sobre derechos de autor y
-  * propiedad intelectual. Su uso no autorizado dara lugar a las sanciones
-  * previstas en la Ley.
-  * @FilePath: 
+/**
+ * Configuración del entorno de desarrollo
+ * 
+ * @description
+ * Define variables de configuración específicas para el entorno de desarrollo
+ * de la aplicación. Estos valores se utilizan durante el desarrollo local y 
+ * pruebas, siendo los valores por defecto cuando se ejecuta ng serve.
+ * 
+ * @usageNotes
+ * - Incluye URLs de desarrollo/testing para APIs y servicios
+ * - Establece flags para funcionalidades en desarrollo
+ * - Configura niveles de registro para depuración durante el desarrollo
+ * - Estos valores son reemplazados por los de environment.prod.ts en producción
  */
-
-// Define variables de configuración para el entorno de desarrollo

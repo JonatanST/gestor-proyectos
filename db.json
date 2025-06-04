@@ -1,0 +1,20 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "nombre": "Sitio Web Corporativo JST",
+      "descripcion": "Desarrollar un sitio institucional",
+      "fechaInicio": "2024-05-01",
+      "fechaEntrega": "2024-06-30",
+      "estado": "en progreso"
+    },
+    {
+      "id": 2,
+      "nombre": "App Móvil Clientes JST",
+      "descripcion": "Aplicación para Android y iOS",
+      "fechaInicio": "2024-04-01",
+      "fechaEntrega": "2024-07-01",
+      "estado": "pendiente"
+    }
+  ]
+}

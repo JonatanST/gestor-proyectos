@@ -10,7 +10,8 @@
     "test:ci": "ng test --configuration=ci",
     "format": "biome format --write .",
     "lint": "biome check .",
-    "lint:fix": "biome check --apply-unsafe ."
+    "lint:fix": "biome check --apply-unsafe .",
+    "json-server": "json-server --watch db.json --port 3000"
   },
   "private": true,
   "dependencies": {
@@ -32,6 +33,7 @@
     "@biomejs/biome": "1.9.4",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.6.0",
+    "json-server": "^1.0.0-beta.3",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",

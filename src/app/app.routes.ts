@@ -28,24 +28,34 @@ export const routes: Routes = [
     path: 'tasks',
     // Apunta al archivo de rutas del feature
     // 'm' es el módulo cargado, accedemos a la constante TASKS_ROUTES exportada
-    loadChildren: () => import('./features/tasks/tasks.routes').then((m) => m.TASKS_ROUTES),
+    loadChildren: () =>
+      import('./features/tasks/tasks.routes').then((m) => m.TASKS_ROUTES),
     // título base para las rutas hijas de este feature
     title: 'Mis Tareas',
+  },
+
+  {
+    path: 'projects',
+    loadChildren: () =>
+      import('./features/projects/projects.routes').then(
+        (m) => m.PROJECTS_ROUTES
+      ),
+    title: 'Gestor de Proyectos',
   },
 
   /*
     {
         // Ejemplo: para autenticación
-        path: 'auth', 
+        path: 'auth',
         loadChildren: () => import('./features/auth/auth.routes')
                              .then(m => m.AUTH_ROUTES)
     },
     {
         // Ejemplo: para el panel principal
-        path: 'dashboard', 
+        path: 'dashboard',
         // Ejemplo cargando solo un componente standalone
         loadComponent: () => import('./features/dashboard/pages/dashboard-page/dashboard-page.component')
-                              .then(m => m.DashboardPageComponent) 
+                              .then(m => m.DashboardPageComponent)
     },
     */
 

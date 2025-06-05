@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../../services/project.service';
 import { Project } from '../../../models/project.model';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-project-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.scss'],
 })
 export class ProjectListComponent implements OnInit {
+  proyectosOriginales: Project[] = [];
   proyectos$!: Observable<Project[]>;
+  filtroEstado: string = '';
 
   constructor(private projectService: ProjectService) {}
 
@@ -23,7 +26,21 @@ export class ProjectListComponent implements OnInit {
   }
 
   cargarProyectos(): void {
-    this.proyectos$ = this.projectService.getProyectos();
+    this.projectService.getProyectos().subscribe((proyectos) => {
+      this.proyectosOriginales = proyectos;
+      this.filtrarProyectos();
+    });
+  }
+
+  filtrarProyectos(): void {
+    if (this.filtroEstado) {
+      const filtrados = this.proyectosOriginales.filter(
+        (p) => p.estado === this.filtroEstado
+      );
+      this.proyectos$ = of(filtrados);
+    } else {
+      this.proyectos$ = of(this.proyectosOriginales);
+    }
   }
 
   eliminar(id: string): void {

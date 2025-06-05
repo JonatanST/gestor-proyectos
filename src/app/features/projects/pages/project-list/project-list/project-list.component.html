@@ -1,6 +1,22 @@
 <section class="project-list">
   <h2>Lista de Proyectos</h2>
-  <a routerLink="/projects/new"><i class="fas fa-plus-circle"></i> Crear Proyecto</a>
+  <div class="top-bar">
+    <div>
+      <a routerLink="/projects/new"><i class="fas fa-plus-circle"></i> Crear Proyecto</a>
+    </div>
+    <div class="filter">
+      <label for="estado">Filtrar por estado:</label>
+      <select id="estado" [(ngModel)]="filtroEstado" (change)="filtrarProyectos()">
+        <option value="">Todos</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="en progreso">En progreso</option>
+        <option value="completado">Completado</option>
+      </select>
+    </div>
+  </div>
+
+
+
 
   <ul *ngIf="proyectos$ | async as proyectos; else cargando">
     <li *ngFor="let proyecto of proyectos">

@@ -70,6 +70,39 @@
     }
   }
 
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    button {
+      padding: 0.5rem 0.9rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+      color: #333;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &.active {
+        background-color: #3085b6;
+        color: #fff;
+      }
+
+      &:hover:not(.active) {
+        background-color: #ddd;
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

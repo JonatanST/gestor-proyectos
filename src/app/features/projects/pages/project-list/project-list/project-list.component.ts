@@ -15,31 +15,54 @@ import Swal from 'sweetalert2';
   styleUrls: ['./project-list.component.scss'],
 })
 export class ProjectListComponent implements OnInit {
-  proyectosOriginales: Project[] = [];
   proyectos$!: Observable<Project[]>;
+  proyectosOriginales: Project[] = [];
+  proyectosFiltrados: Project[] = [];
+
   filtroEstado: string = '';
+
+  // Paginación
+  paginaActual = 1;
+  proyectosPorPagina = 3;
 
   constructor(private projectService: ProjectService) {}
 
   ngOnInit(): void {
-    this.cargarProyectos();
-  }
+    this.proyectos$ = this.projectService.getProyectos();
 
-  cargarProyectos(): void {
-    this.projectService.getProyectos().subscribe((proyectos) => {
+    // Suscribimos para mantener la fuente original y operar filtrado/paginación
+    this.proyectos$.subscribe((proyectos) => {
       this.proyectosOriginales = proyectos;
       this.filtrarProyectos();
     });
   }
 
   filtrarProyectos(): void {
+    this.paginaActual = 1;
     if (this.filtroEstado) {
-      const filtrados = this.proyectosOriginales.filter(
+      this.proyectosFiltrados = this.proyectosOriginales.filter(
         (p) => p.estado === this.filtroEstado
       );
-      this.proyectos$ = of(filtrados);
     } else {
-      this.proyectos$ = of(this.proyectosOriginales);
+      this.proyectosFiltrados = [...this.proyectosOriginales];
+    }
+  }
+
+  get proyectosPaginados(): Project[] {
+    const inicio = (this.paginaActual - 1) * this.proyectosPorPagina;
+    return this.proyectosFiltrados.slice(
+      inicio,
+      inicio + this.proyectosPorPagina
+    );
+  }
+
+  get totalPaginas(): number {
+    return Math.ceil(this.proyectosFiltrados.length / this.proyectosPorPagina);
+  }
+
+  cambiarPagina(nuevaPagina: number): void {
+    if (nuevaPagina >= 1 && nuevaPagina <= this.totalPaginas) {
+      this.paginaActual = nuevaPagina;
     }
   }
 
@@ -64,7 +87,7 @@ export class ProjectListComponent implements OnInit {
               'success'
             );
           },
-          error: (error) => {
+          error: () => {
             Swal.fire(
               'Error',
               'Hubo un problema al eliminar el proyecto.',
@@ -72,8 +95,15 @@ export class ProjectListComponent implements OnInit {
             );
           },
         });
-      } else {
       }
+    });
+  }
+
+  private cargarProyectos(): void {
+    this.proyectos$ = this.projectService.getProyectos();
+    this.proyectos$.subscribe((proyectos) => {
+      this.proyectosOriginales = proyectos;
+      this.filtrarProyectos();
     });
   }
 }

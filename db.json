@@ -47,6 +47,14 @@
       "fechaInicio": "2025-06-05",
       "fechaEntrega": "2025-06-05",
       "estado": "en progreso"
+    },
+    {
+      "id": "11",
+      "nombre": "nuevo",
+      "descripcion": "",
+      "fechaInicio": "2025-06-05",
+      "fechaEntrega": "2025-06-05",
+      "estado": "en progreso"
     }
   ]
 }

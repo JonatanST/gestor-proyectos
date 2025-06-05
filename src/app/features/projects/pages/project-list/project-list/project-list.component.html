@@ -1,8 +1,11 @@
 <section class="project-list">
   <h2>Lista de Proyectos</h2>
+
   <div class="top-bar">
     <div>
-      <a routerLink="/projects/new"><i class="fas fa-plus-circle"></i> Crear Proyecto</a>
+      <a routerLink="/projects/new">
+        <i class="fas fa-plus-circle"></i> Crear Proyecto
+      </a>
     </div>
     <div class="filter">
       <label for="estado">Filtrar por estado:</label>
@@ -15,27 +18,24 @@
     </div>
   </div>
 
-
-
-
-  <ul *ngIf="proyectos$ | async as proyectos; else cargando">
-    <li *ngFor="let proyecto of proyectos">
+  <ul *ngIf="proyectosPaginados.length > 0; else cargando">
+    <li *ngFor="let proyecto of proyectosPaginados">
       <div>
         <p><strong>{{ proyecto.nombre }}</strong></p>
-        <hr>
-        <br>
+        <hr />
+        <br />
         <p><b> 📅 Fecha de Inicio:</b> {{ proyecto.fechaInicio }}</p>
-        <p><b> 📆 Fecha de Entrega: </b>{{ proyecto.fechaEntrega }}</p>
-        <p><b> Descripción: </b>
-          {{ proyecto.descripcion }}
-        </p>
-        <p><b> Estado: </b>{{ proyecto.estado }}</p>
+        <p><b> 📆 Fecha de Entrega:</b> {{ proyecto.fechaEntrega }}</p>
+        <p><b> Descripción:</b> {{ proyecto.descripcion }}</p>
+        <p><b> Estado:</b> {{ proyecto.estado }}</p>
       </div>
       <div class="btn-group">
         <button [routerLink]="['/projects/edit', proyecto.id]">
           <i class="fa fa-pencil" aria-hidden="true"></i> Editar
         </button>
-        <button (click)="eliminar(proyecto.id!)"><i class="fas fa-trash-alt"></i> Eliminar</button>
+        <button (click)="eliminar(proyecto.id!)">
+          <i class="fas fa-trash-alt"></i> Eliminar
+        </button>
       </div>
     </li>
   </ul>
@@ -44,4 +44,20 @@
     <p style="text-align: center;">Cargando proyectos...</p>
   </ng-template>
 
+  <!-- Paginación -->
+  <div class="pagination" *ngIf="totalPaginas > 1">
+    <button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">
+      ◀ Anterior
+    </button>
+
+    <ng-container *ngFor="let pagina of [].constructor(totalPaginas); let i = index">
+      <button (click)="cambiarPagina(i + 1)" [class.active]="paginaActual === i + 1">
+        {{ i + 1 }}
+      </button>
+    </ng-container>
+
+    <button (click)="cambiarPagina(paginaActual + 1)" [disabled]="paginaActual === totalPaginas">
+      Siguiente ▶
+    </button>
+  </div>
 </section>

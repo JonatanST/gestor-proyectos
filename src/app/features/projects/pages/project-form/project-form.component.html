@@ -1,4 +1,4 @@
-<h2>Crear Proyecto</h2>
+<h2>{{ editMode ? 'Editar Proyecto' : 'Crear Proyecto' }}</h2>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div>
@@ -32,4 +32,5 @@
   </div>
 
   <button type="submit" [disabled]="form.invalid">Guardar</button>
+  <button type="button" (click)="cancelar()">Cancelar</button>
 </form>

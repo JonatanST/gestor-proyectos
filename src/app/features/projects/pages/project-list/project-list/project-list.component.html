@@ -1,18 +1,31 @@
-<h2>Lista de Proyectos</h2>
-<a routerLink="/projects/new">Crear Proyecto</a>
+<section class="project-list">
+  <h2>Lista de Proyectos</h2>
+  <a routerLink="/projects/new"><i class="fas fa-plus-circle"></i> Crear Proyecto</a>
 
-<ul *ngIf="proyectos$ | async as proyectos; else cargando">
-  <li *ngFor="let proyecto of proyectos">
-    <div>
-      <strong>{{ proyecto.nombre }}</strong> ({{ proyecto.estado }})<br />
-      <small>{{ proyecto.fechaInicio }} - {{ proyecto.fechaEntrega }}</small>
-      <p>{{ proyecto.descripcion }}</p>
-    </div>
-    <button [routerLink]="['/projects/edit', proyecto.id]">Editar</button>
-    <button (click)="eliminar(proyecto.id!)">Eliminar</button>
-  </li>
-</ul>
+  <ul *ngIf="proyectos$ | async as proyectos; else cargando">
+    <li *ngFor="let proyecto of proyectos">
+      <div>
+        <p><strong>{{ proyecto.nombre }}</strong></p>
+        <hr>
+        <br>
+        <p><b> 📅 Fecha de Inicio:</b> {{ proyecto.fechaInicio }}</p>
+        <p><b> 📆 Fecha de Entrega: </b>{{ proyecto.fechaEntrega }}</p>
+        <p><b> Descripción: </b>
+          {{ proyecto.descripcion }}
+        </p>
+        <p><b> Estado: </b>{{ proyecto.estado }}</p>
+      </div>
+      <div class="btn-group">
+        <button [routerLink]="['/projects/edit', proyecto.id]">
+          <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+        </button>
+        <button (click)="eliminar(proyecto.id!)"><i class="fas fa-trash-alt"></i> Eliminar</button>
+      </div>
+    </li>
+  </ul>
 
-<ng-template #cargando>
-  <p>Cargando proyectos...</p>
-</ng-template>
+  <ng-template #cargando>
+    <p style="text-align: center;">Cargando proyectos...</p>
+  </ng-template>
+
+</section>

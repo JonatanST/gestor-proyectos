@@ -4,6 +4,7 @@ import { Project } from '../../../models/project.model';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-project-list',
@@ -22,25 +23,40 @@ export class ProjectListComponent implements OnInit {
   }
 
   cargarProyectos(): void {
-    console.log('📦 Cargando proyectos...');
     this.proyectos$ = this.projectService.getProyectos();
   }
 
   eliminar(id: string): void {
-    console.log(
-      '🧨 Solicitando eliminación de proyecto con ID:',
-      id,
-      typeof id
-    );
-
-    this.projectService.eliminarProyecto(id).subscribe({
-      next: () => {
-        console.log('✅ Proyecto eliminado');
-        this.proyectos$ = this.projectService.getProyectos();
-      },
-      error: (error) => {
-        console.error('❌ ERROR al eliminar:', error);
-      },
+    Swal.fire({
+      title: '¿Estás seguro de eliminar el proyecto?',
+      text: 'No podrás revertir esta acción',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3ec4d3',
+      cancelButtonColor: '#7595b3',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.projectService.eliminarProyecto(id).subscribe({
+          next: () => {
+            this.cargarProyectos();
+            Swal.fire(
+              '¡Eliminado!',
+              'El proyecto ha sido eliminado.',
+              'success'
+            );
+          },
+          error: (error) => {
+            Swal.fire(
+              'Error',
+              'Hubo un problema al eliminar el proyecto.',
+              'error'
+            );
+          },
+        });
+      } else {
+      }
     });
   }
 }

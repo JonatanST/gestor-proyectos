@@ -1,14 +1,6 @@
 {
   "projects": [
     {
-      "id": "4",
-      "nombre": "Nuevo proyecto 3",
-      "descripcion": "Nuevo proyecto 3",
-      "fechaInicio": "2025-06-05",
-      "fechaEntrega": "2025-06-05",
-      "estado": "pendiente"
-    },
-    {
       "id": "5",
       "nombre": "Proyecto 4",
       "descripcion": "Nuevo proyecto 4 para desarollo pruebas",
@@ -22,6 +14,38 @@
       "descripcion": "asdkal  ajlsdkl al  jsadjasjl ckljlka  sajklk jslksa j asjksj lakj ls sajklsak j",
       "fechaInicio": "2025-06-05",
       "fechaEntrega": "2025-06-12",
+      "estado": "en progreso"
+    },
+    {
+      "id": "7",
+      "nombre": "Nuevo proyecto 3",
+      "descripcion": "das 12as13d1 asdasd",
+      "fechaInicio": "2025-06-05",
+      "fechaEntrega": "2025-06-05",
+      "estado": "pendiente"
+    },
+    {
+      "id": "8",
+      "nombre": "Nuevo proyecto",
+      "descripcion": "",
+      "fechaInicio": "2025-06-05",
+      "fechaEntrega": "2025-06-05",
+      "estado": "pendiente"
+    },
+    {
+      "id": "9",
+      "nombre": "asdas",
+      "descripcion": "asdad",
+      "fechaInicio": "2025-06-05",
+      "fechaEntrega": "2025-06-05",
+      "estado": "pendiente"
+    },
+    {
+      "id": "10",
+      "nombre": "asddddd",
+      "descripcion": "",
+      "fechaInicio": "2025-06-05",
+      "fechaEntrega": "2025-06-05",
       "estado": "en progreso"
     }
   ]

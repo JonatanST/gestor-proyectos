@@ -7,4 +7,18 @@ export const PROJECTS_ROUTES: Routes = [
     component: ProjectListComponent,
     title: 'Listado de Proyectos',
   },
+  {
+    path: 'new',
+    loadComponent: () =>
+      import('./pages/project-form/project-form.component').then(
+        (m) => m.ProjectFormComponent
+      ),
+  },
+  {
+    path: 'edit/:id',
+    loadComponent: () =>
+      import('./pages/project-form/project-form.component').then(
+        (m) => m.ProjectFormComponent
+      ),
+  },
 ];

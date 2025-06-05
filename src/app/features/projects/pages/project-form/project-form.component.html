@@ -1,0 +1,35 @@
+<h2>Crear Proyecto</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Nombre:</label>
+    <input formControlName="nombre" type="text" />
+  </div>
+
+  <div>
+    <label>Descripción:</label>
+    <textarea formControlName="descripcion"></textarea>
+  </div>
+
+  <div>
+    <label>Fecha Inicio:</label>
+    <input formControlName="fechaInicio" type="date" />
+  </div>
+
+  <div>
+    <label>Fecha Entrega:</label>
+    <input formControlName="fechaEntrega" type="date" />
+  </div>
+
+  <div>
+    <label>Estado:</label>
+    <select formControlName="estado">
+      <option value="">Seleccione estado</option>
+      <option value="pendiente">Pendiente</option>
+      <option value="en progreso">En progreso</option>
+      <option value="completado">Completado</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Guardar</button>
+</form>

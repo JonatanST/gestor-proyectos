@@ -1,19 +1,27 @@
 {
   "projects": [
     {
-      "id": "2",
-      "nombre": "prueba 5",
-      "descripcion": "prueba 2",
-      "fechaInicio": "2025-06-04",
-      "fechaEntrega": "2025-06-04",
+      "id": "4",
+      "nombre": "Nuevo proyecto 3",
+      "descripcion": "Nuevo proyecto 3",
+      "fechaInicio": "2025-06-05",
+      "fechaEntrega": "2025-06-05",
+      "estado": "pendiente"
+    },
+    {
+      "id": "5",
+      "nombre": "Proyecto 4",
+      "descripcion": "Nuevo proyecto 4 para desarollo pruebas",
+      "fechaInicio": "2025-06-05",
+      "fechaEntrega": "2025-06-20",
       "estado": "en progreso"
     },
     {
-      "id": "3",
-      "nombre": "nuevo proyecto 2",
-      "descripcion": "proyecto ",
-      "fechaInicio": "2025-06-04",
-      "fechaEntrega": "2025-06-04",
+      "id": "6",
+      "nombre": "nuevo proyect",
+      "descripcion": "asdkal  ajlsdkl al  jsadjasjl ckljlka  sajklk jslksa j asjksj lakj ls sajklsak j",
+      "fechaInicio": "2025-06-05",
+      "fechaEntrega": "2025-06-12",
       "estado": "en progreso"
     }
   ]

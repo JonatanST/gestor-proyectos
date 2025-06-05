@@ -35,14 +35,11 @@ export class ProjectFormComponent implements OnInit {
       estado: ['', Validators.required],
     });
 
-    // 🧠 Detectar modo edición
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
       if (id) {
         this.editMode = true;
         this.projectId = id;
-        console.log('✏️ Modo edición. Cargando proyecto con ID:', id);
-
         this.projectService.getProyectoPorId(id).subscribe((proyecto) => {
           this.form.patchValue(proyecto);
         });
@@ -58,8 +55,6 @@ export class ProjectFormComponent implements OnInit {
         id: this.projectId,
         ...this.form.value,
       };
-      console.log('📦 ACTUALIZANDO proyecto:', proyectoActualizado);
-
       this.projectService
         .actualizarProyecto(proyectoActualizado)
         .subscribe(() => {
@@ -67,19 +62,20 @@ export class ProjectFormComponent implements OnInit {
         });
     } else {
       this.projectService.getProyectos().subscribe((proyectos) => {
-        const ids = proyectos.map((p) => +p.id!); // Convertimos string -> number
-        const nuevoId = (ids.length > 0 ? Math.max(...ids) + 1 : 1).toString(); // string
-
+        const ids = proyectos.map((p) => +p.id!);
+        const nuevoId = (ids.length > 0 ? Math.max(...ids) + 1 : 1).toString();
         const nuevoProyecto: Project = {
           id: nuevoId,
           ...this.form.value,
         };
-
-        console.log('🆕 CREANDO nuevo proyecto:', nuevoProyecto);
         this.projectService.agregarProyecto(nuevoProyecto).subscribe(() => {
           this.router.navigate(['/projects']);
         });
       });
     }
+  }
+
+  cancelar(): void {
+    this.router.navigate(['/projects']);
   }
 }

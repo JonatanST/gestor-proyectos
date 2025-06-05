@@ -1,21 +1,18 @@
-<section class="project-list">
-  <h1>Lista de Proyectos</h1>
+<h2>Lista de Proyectos</h2>
+<a routerLink="/projects/new">Crear Proyecto</a>
 
-  <button routerLink="/projects/new">Crear Proyecto</button>
+<ul *ngIf="proyectos$ | async as proyectos; else cargando">
+  <li *ngFor="let proyecto of proyectos">
+    <div>
+      <strong>{{ proyecto.nombre }}</strong> ({{ proyecto.estado }})<br />
+      <small>{{ proyecto.fechaInicio }} - {{ proyecto.fechaEntrega }}</small>
+      <p>{{ proyecto.descripcion }}</p>
+    </div>
+    <button [routerLink]="['/projects/edit', proyecto.id]">Editar</button>
+    <button (click)="eliminar(proyecto.id!)">Eliminar</button>
+  </li>
+</ul>
 
-  <ul *ngIf="proyectos$ | async as proyectos; else cargando">
-    <li *ngFor="let proyecto of proyectos">
-      <div>
-        <strong>{{ proyecto.nombre }}</strong> ({{ proyecto.estado }})<br />
-        <small>{{ proyecto.fechaInicio }} - {{ proyecto.fechaEntrega }}</small>
-        <p>{{ proyecto.descripcion }}</p>
-      </div>
-      <button [routerLink]="['/projects/edit', proyecto.id]">Editar</button>
-      <button (click)="eliminar(proyecto.id)">Eliminar</button>
-    </li>
-  </ul>
-
-  <ng-template #cargando>
-    <p>Cargando proyectos...</p>
-  </ng-template>
-</section>
+<ng-template #cargando>
+  <p>Cargando proyectos...</p>
+</ng-template>

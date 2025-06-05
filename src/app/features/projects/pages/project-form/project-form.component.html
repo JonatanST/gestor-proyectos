@@ -1,36 +1,59 @@
-<h2>{{ editMode ? 'Editar Proyecto' : 'Crear Proyecto' }}</h2>
+<section class="project-form">
+  <h2>{{ editMode ? 'Editar Proyecto' : 'Crear Proyecto' }}</h2>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div>
-    <label>Nombre:</label>
-    <input formControlName="nombre" type="text" />
-  </div>
+  <p *ngIf="cargandoProyecto">⏳ Cargando proyecto...</p>
+  <p *ngIf="errorCargandoProyecto" class="error">❌ Error al cargar el proyecto. Intenta de nuevo.</p>
 
-  <div>
-    <label>Descripción:</label>
-    <textarea formControlName="descripcion"></textarea>
-  </div>
+  <form *ngIf="!cargandoProyecto" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombre"><i class="fas fa-thumbtack"></i> Nombre:</label>
+      <input id="nombre" type="text" formControlName="nombre" />
+      <small *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid" class="error">
+        El nombre es obligatorio.
+      </small>
+    </div>
 
-  <div>
-    <label>Fecha Inicio:</label>
-    <input formControlName="fechaInicio" type="date" />
-  </div>
+    <div class="form-group">
+      <label for="descripcion"><i class="fas fa-file-alt"></i> Descripción:</label>
+      <textarea id="descripcion" formControlName="descripcion"></textarea>
+    </div>
 
-  <div>
-    <label>Fecha Entrega:</label>
-    <input formControlName="fechaEntrega" type="date" />
-  </div>
+    <div class="form-group">
+      <label for="fechaInicio"><i class="fas fa-calendar-alt"></i> Fecha de Inicio:</label>
+      <input id="fechaInicio" type="date" formControlName="fechaInicio" />
+      <small *ngIf="form.get('fechaInicio')?.touched && form.get('fechaInicio')?.invalid" class="error">
+        La fecha de inicio es obligatoria.
+      </small>
+    </div>
 
-  <div>
-    <label>Estado:</label>
-    <select formControlName="estado">
-      <option value="">Seleccione estado</option>
-      <option value="pendiente">Pendiente</option>
-      <option value="en progreso">En progreso</option>
-      <option value="completado">Completado</option>
-    </select>
-  </div>
+    <div class="form-group">
+      <label for="fechaEntrega"><i class="fas fa-calendar-check"></i> Fecha de Entrega:</label>
+      <input id="fechaEntrega" type="date" formControlName="fechaEntrega" />
+      <small *ngIf="form.get('fechaEntrega')?.touched && form.get('fechaEntrega')?.invalid" class="error">
+        La fecha de entrega es obligatoria.
+      </small>
+    </div>
 
-  <button type="submit" [disabled]="form.invalid">Guardar</button>
-  <button type="button" (click)="cancelar()">Cancelar</button>
-</form>
+    <div class="form-group">
+      <label for="estado"><i class="fas fa-tasks"></i> Estado:</label>
+      <select id="estado" formControlName="estado">
+        <option value="">Seleccione estado</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="en progreso">En progreso</option>
+        <option value="completado">Completado</option>
+      </select>
+      <small *ngIf="form.get('estado')?.touched && form.get('estado')?.invalid" class="error">
+        Debe seleccionar un estado.
+      </small>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="form.invalid">
+        <i class="fas fa-save"></i> {{ editMode ? 'Actualizar' : 'Guardar' }}
+      </button>
+      <button type="button" class="cancel" (click)="cancelar()">
+        <i class="fas fa-arrow-left"></i> Cancelar
+      </button>
+    </div>
+  </form>
+</section>

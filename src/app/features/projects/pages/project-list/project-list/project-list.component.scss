@@ -4,10 +4,14 @@
   margin: 0 auto;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
+  label {
+    color: #2b4171;
+  }
+
   h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: #2c3e50;
+    color: #2b4171;
     text-align: center;
   }
 
@@ -16,7 +20,7 @@
     max-width: 200px;
     margin: 0 auto 2rem auto;
     padding: 0.7rem 1.2rem;
-    background-color: #1460a8;
+    background-color: #2b4171;
     color: #fff;
     text-align: center;
     text-decoration: none;
@@ -27,8 +31,8 @@
 
     &:hover {
       background-color: #fff;
-      color: #1460a8;
-      border: 1px solid #1460a8;
+      color: #2b4171;
+      border: 1px solid #2b4171;
     }
   }
 
@@ -40,7 +44,7 @@
     gap: 1rem;
 
     a {
-      background-color: #1460a8;
+      background-color: #2b4171;
       color: #fff;
       text-decoration: none;
       padding: 0.6rem 1rem;
@@ -52,7 +56,7 @@
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: #0c3c6a;
+        background-color: #2b4171;
       }
     }
 
@@ -88,7 +92,7 @@
       transition: background-color 0.3s ease;
 
       &.active {
-        background-color: #3085b6;
+        background-color: #2b4171;
         color: #fff;
       }
 
@@ -161,12 +165,12 @@
         transition: background 0.3s ease;
 
         &:first-of-type {
-          background-color: #27ae60;
+          background-color: #54c59b;
           color: #fff;
         }
 
         &:last-of-type {
-          background-color: #c0392b;
+          background-color: #51626f;
           color: #fff;
         }
 
@@ -175,5 +179,20 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1440px) {
+  .project-list {
+    padding: 0rem;
+  }
+
+  .top-bar {
+    padding: 0rem;
+    margin-bottom: 0rem !important;
+  }
+
+  .pagination {
+    margin-top: 1rem !important;
   }
 }

@@ -3,11 +3,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet],
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'scaffold-angular-19';
+  title = 'Gestor Proyectos - scaffold-angular-19';
 }

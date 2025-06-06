@@ -12,5 +12,8 @@ import { RouterModule } from '@angular/router';
 export class DashboardPageComponent implements OnInit {
   constructor(private readonly logger: LoggerService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.logger.log('DashboardPageComponent se ha inicializado.');
+    this.logger.warn('Advertencia de ejemplo desde el dashboard.');
+  }
 }

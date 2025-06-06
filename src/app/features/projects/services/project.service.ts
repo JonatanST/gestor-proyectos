@@ -12,27 +12,22 @@ export class ProjectService {
   constructor(private http: HttpClient) {}
 
   getProyectos(): Observable<Project[]> {
-    console.log('📥 Obteniendo proyectos...');
     return this.http.get<Project[]>(this.API_URL);
   }
 
   getProyectoPorId(id: string): Observable<Project> {
-    console.log('🔍 Buscando proyecto con ID:', id);
     return this.http.get<Project>(`${this.API_URL}/${id}`);
   }
 
   agregarProyecto(proyecto: Project): Observable<Project> {
-    console.log('📤 Enviando nuevo proyecto:', proyecto);
     return this.http.post<Project>(this.API_URL, proyecto);
   }
 
   eliminarProyecto(id: string): Observable<void> {
-    console.log('🧨 Eliminando proyecto con ID:', id, typeof id);
     return this.http.delete<void>(`${this.API_URL}/${id}`);
   }
 
   actualizarProyecto(proyecto: Project): Observable<Project> {
-    console.log('✏️ Enviando PUT con:', proyecto);
     return this.http.put<Project>(`${this.API_URL}/${proyecto.id}`, proyecto);
   }
 }

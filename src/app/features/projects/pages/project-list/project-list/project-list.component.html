@@ -18,46 +18,55 @@
     </div>
   </div>
 
-  <ul *ngIf="proyectosPaginados.length > 0; else cargando">
-    <li *ngFor="let proyecto of proyectosPaginados">
-      <div>
-        <p><strong>{{ proyecto.nombre }}</strong></p>
-        <hr />
-        <br />
-        <p><b> 📅 Fecha de Inicio:</b> {{ proyecto.fechaInicio }}</p>
-        <p><b> 📆 Fecha de Entrega:</b> {{ proyecto.fechaEntrega }}</p>
-        <p><b> Descripción:</b> {{ proyecto.descripcion }}</p>
-        <p><b> Estado:</b> {{ proyecto.estado }}</p>
-      </div>
-      <div class="btn-group">
-        <button [routerLink]="['/projects/edit', proyecto.id]">
-          <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-        </button>
-        <button (click)="eliminar(proyecto.id!)">
-          <i class="fas fa-trash-alt"></i> Eliminar
-        </button>
-      </div>
-    </li>
-  </ul>
+  <!-- Loading -->
+  <ng-container *ngIf="cargando; else contenido">
+    <div class="spinner-container">
+      <div class="spinner"></div>
+      <p>Cargando proyectos...</p>
+    </div>
+  </ng-container>
 
-  <ng-template #cargando>
-    <p style="text-align: center;">Cargando proyectos...</p>
+  <!-- Contenido -->
+  <ng-template #contenido>
+    <ul *ngIf="proyectosPaginados.length > 0; else sinProyectos">
+      <li *ngFor="let proyecto of proyectosPaginados">
+        <div>
+          <p><strong>{{ proyecto.nombre }}</strong></p>
+          <hr />
+          <br />
+          <p><b> <i class="fas fa-calendar-alt"></i> Fecha de Inicio:</b> {{ proyecto.fechaInicio }}</p>
+          <p><b> <i class="fas fa-calendar-alt"></i> Fecha de Entrega:</b> {{ proyecto.fechaEntrega }}</p>
+          <p><b> Descripción:</b> {{ proyecto.descripcion }}</p>
+          <p><b> Estado:</b> {{ proyecto.estado }}</p>
+        </div>
+        <div class="btn-group">
+          <button [routerLink]="['/projects/edit', proyecto.id]">
+            <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+          </button>
+          <button (click)="eliminar(proyecto.id!)">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </button>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Sin resultados -->
+    <ng-template #sinProyectos>
+      <div *ngIf="huboConexionExitosa && !cargando" class="no-results">
+        <p>No hay proyectos con el estado seleccionado.</p>
+      </div>
+    </ng-template>
+
+
+    <!-- Paginación -->
+    <div class="pagination" *ngIf="totalPaginas > 1">
+      <button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">◀ Anterior</button>
+      <ng-container *ngFor="let pagina of [].constructor(totalPaginas); let i = index">
+        <button (click)="cambiarPagina(i + 1)" [class.active]="paginaActual === i + 1">
+          {{ i + 1 }}
+        </button>
+      </ng-container>
+      <button (click)="cambiarPagina(paginaActual + 1)" [disabled]="paginaActual === totalPaginas">Siguiente ▶</button>
+    </div>
   </ng-template>
-
-  <!-- Paginación -->
-  <div class="pagination" *ngIf="totalPaginas > 1">
-    <button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">
-      ◀ Anterior
-    </button>
-
-    <ng-container *ngFor="let pagina of [].constructor(totalPaginas); let i = index">
-      <button (click)="cambiarPagina(i + 1)" [class.active]="paginaActual === i + 1">
-        {{ i + 1 }}
-      </button>
-    </ng-container>
-
-    <button (click)="cambiarPagina(paginaActual + 1)" [disabled]="paginaActual === totalPaginas">
-      Siguiente ▶
-    </button>
-  </div>
 </section>

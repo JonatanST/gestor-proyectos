@@ -16,7 +16,7 @@
 
     <p *ngIf="cargandoProyecto"> Cargando proyecto...</p>
     <p *ngIf="errorCargandoProyecto" class="error">
-      ❌ Error al cargar el proyecto. Intenta de nuevo.
+      Error al cargar el proyecto. Intenta de nuevo.
     </p>
 
     <form *ngIf="!cargandoProyecto" [formGroup]="form" (ngSubmit)="onSubmit()">

@@ -1,17 +1,9 @@
 {
   "projects": [
     {
-      "id": "5",
-      "nombre": "Proyecto 4",
-      "descripcion": "Nuevo proyecto 4 para desarollo pruebas",
-      "fechaInicio": "2025-06-05",
-      "fechaEntrega": "2025-06-20",
-      "estado": "en progreso"
-    },
-    {
       "id": "6",
-      "nombre": "nuevo proyect",
-      "descripcion": "asdkal  ajlsdkl al  jsadjasjl ckljlka  sajklk jslksa j asjksj lakj ls sajklsak j",
+      "nombre": "nuevo proyecto 2",
+      "descripcion": "nuevo proyecto 2",
       "fechaInicio": "2025-06-05",
       "fechaEntrega": "2025-06-12",
       "estado": "en progreso"
@@ -26,8 +18,8 @@
     },
     {
       "id": "8",
-      "nombre": "Nuevo proyecto",
-      "descripcion": "",
+      "nombre": "Nuevo proyecto 4",
+      "descripcion": "Nuevo proyecto 4",
       "fechaInicio": "2025-06-05",
       "fechaEntrega": "2025-06-05",
       "estado": "pendiente"
@@ -55,6 +47,22 @@
       "fechaInicio": "2025-06-05",
       "fechaEntrega": "2025-06-05",
       "estado": "en progreso"
+    },
+    {
+      "id": "12",
+      "nombre": "asda",
+      "descripcion": "asdad",
+      "fechaInicio": "2025-06-06",
+      "fechaEntrega": "2025-06-06",
+      "estado": "pendiente"
+    },
+    {
+      "id": "13",
+      "nombre": "prueba de prueba",
+      "descripcion": "",
+      "fechaInicio": "2025-06-06",
+      "fechaEntrega": "2025-06-06",
+      "estado": "pendiente"
     }
   ]
 }

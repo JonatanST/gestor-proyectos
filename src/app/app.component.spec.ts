@@ -33,10 +33,10 @@ describe('AppComponent', () => {
   });
 
   // Esta prueba Verifica que el componente tiene una propiedad title y que su valor es 'scaffold-angular-19'.
-  it(`should have the 'scaffold-angular-19' title`, () => {
+  it(`should have the 'Gestor Proyectos - scaffold-angular-19' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     // Verifica que app.component.ts tenga: title = 'scaffold-angular-19';
-    expect(app.title).toEqual('scaffold-angular-19');
+    expect(app.title).toEqual('Gestor Proyectos - scaffold-angular-19');
   });
 });

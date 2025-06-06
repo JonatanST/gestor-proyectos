@@ -4,14 +4,14 @@ Un punto de partida robusto y bien estructurado para iniciar proyectos Angular (
 
 ## ✨ Características Principales
 
-* 🧩 **Angular (v19+):** Framework moderno con arquitectura de componentes standalone.
-* 🟦 **TypeScript:** Tipado estático para mejorar la mantenibilidad y reducir errores.
-* 🎨 **SCSS:** Preprocesador CSS para estilos más potentes y organizados.
-* 🧭 **Angular Router:** Enrutamiento declarativo y funcional para SPAs.
-* 🧪 **Karma & Jasmine:** Framework y ejecutor de pruebas estándar en Angular para pruebas unitarias y de componentes.
-* 🐶 **Biome:** Formateador y linter de código integrado y de alto rendimiento (configuración en `biome.json`).
-* 📡 **Angular HttpClient:** Para realizar peticiones HTTP (se configura en `app.config.ts` con `provideHttpClient()`).
-* 📂 **Arquitectura Modular:** Estructura de carpetas organizada por `core`, `features` y `shared`.
+- 🧩 **Angular (v19+):** Framework moderno con arquitectura de componentes standalone.
+- 🟦 **TypeScript:** Tipado estático para mejorar la mantenibilidad y reducir errores.
+- 🎨 **SCSS:** Preprocesador CSS para estilos más potentes y organizados.
+- 🧭 **Angular Router:** Enrutamiento declarativo y funcional para SPAs.
+- 🧪 **Karma & Jasmine:** Framework y ejecutor de pruebas estándar en Angular para pruebas unitarias y de componentes.
+- 🐶 **Biome:** Formateador y linter de código integrado y de alto rendimiento (configuración en `biome.json`).
+- 📡 **Angular HttpClient:** Para realizar peticiones HTTP (se configura en `app.config.ts` con `provideHttpClient()`).
+- 📂 **Arquitectura Modular:** Estructura de carpetas organizada por `core`, `features` y `shared`.
 
 🔗 **Ver:** [`docs/02-technologies.md`](./_docs/02-technologies.md) para una explicación profunda de las herramientas.
 
@@ -64,9 +64,9 @@ La estructura principal del proyecto está diseñada para la escalabilidad y man
 └── tsconfig.spec.json         # Configuración de TypeScript para las pruebas
 ```
 
-* **`src/app/core`**: Lógica y servicios transversales, de instancia única.
-* **`src/app/features`**: Módulos autocontenidos por funcionalidad, cargados perezosamente.
-* **`src/app/shared`**: Elementos standalone reutilizables (componentes, directivas, pipes).
+- **`src/app/core`**: Lógica y servicios transversales, de instancia única.
+- **`src/app/features`**: Módulos autocontenidos por funcionalidad, cargados perezosamente.
+- **`src/app/shared`**: Elementos standalone reutilizables (componentes, directivas, pipes).
 
 🔗 **Ver:** [`docs/03-architecture.md`](./_docs/03-architecture.md) para una explicación más detallada de la estructura.
 
@@ -74,80 +74,85 @@ La estructura principal del proyecto está diseñada para la escalabilidad y man
 
 **Prerrequisitos:**
 
-| Tecnología     | Versión                                  |
-| :------------- | :---------------------------------------------------- |
-| Node.js        | v22.14.0                            |
-| npm            | 10.9.2          |
-| Angular CLI    | 19.2.10 |
+| Tecnología  | Versión  |
+| :---------- | :------- |
+| Node.js     | v22.14.0 |
+| npm         | 10.9.2   |
+| Angular CLI | 19.2.10  |
 
 **Pasos:**
 
 1.  **Clonar el repositorio (o usar como plantilla):**
+
     ```bash
     # git clone https://github.com/Grupo-ASD/NOMBRE_REPOSITORIO.git
     # cd NOMBRE_REPOSITORIO
     ```
 
 2.  **Instalar dependencias:**
+
     ```bash
     npm install
     ```
 
 3.  **Ejecutar Servidor de Desarrollo:**
+
     ```bash
     npm start
     ```
+
     Abre tu navegador en `http://localhost:4200/`.
 
 4.  **Comandos Útiles (Scripts de `package.json`):**
-    * `npm start` o `ng serve`: Inicia el servidor de desarrollo.
-    * `npm run build`: Compila la aplicación para producción.
-    * `npm test`: Ejecuta las pruebas unitarias/componentes con Karma/Jasmine (abre un navegador).
-    * `npm run test:ci`: Ejecuta pruebas para CI (headless, una sola ejecución, con cobertura).
-    * `npm run format`: Formatea todo el código con Biome.
-    * `npm run lint`: Revisa el código con Biome (sin aplicar cambios).
-    * `npm run lint:fix`: Revisa y aplica arreglos automáticos con Biome.
+    - `npm start` o `ng serve`: Inicia el servidor de desarrollo.
+    - `npm run build`: Compila la aplicación para producción.
+    - `npm test`: Ejecuta las pruebas unitarias/componentes con Karma/Jasmine (abre un navegador).
+    - `npm run test:ci`: Ejecuta pruebas para CI (headless, una sola ejecución, con cobertura).
+    - `npm run format`: Formatea todo el código con Biome.
+    - `npm run lint`: Revisa el código con Biome (sin aplicar cambios).
+    - `npm run lint:fix`: Revisa y aplica arreglos automáticos con Biome.
 
 ## 🎨 Estilo y Convenciones de Código (Biome)
 
 Este proyecto utiliza **Biome** para formateo y linting, asegurando un código limpio y consistente.
-* La configuración se encuentra en `biome.json`.
-* Se recomienda instalar la extensión "Biome" para tu editor (VS Code/Cursor) para formateo al guardar y feedback en tiempo real.
-* Utiliza los scripts para aplicar y verificar las reglas desde la terminal.:
 
-    ```bash
-    npm run format
-    ```
+- La configuración se encuentra en `biome.json`.
+- Se recomienda instalar la extensión "Biome" para tu editor (VS Code/Cursor) para formateo al guardar y feedback en tiempo real.
+- Utiliza los scripts para aplicar y verificar las reglas desde la terminal.:
 
-    ```bash
-    npm run lint
-    ```
+  ```bash
+  npm run format
+  ```
 
+  ```bash
+  npm run lint
+  ```
 
 🔗 **Ver:** [`docs/06-ide-integration.md`](./_docs/06-ide-integration.md) para detalles de la configuración y uso de Biome.
 
 ## 🛠️ Desarrollo de Funcionalidades y Componentes
 
-### 1. Añadir una Nueva Funcionalidad (Feature) 
+### 1. Añadir una Nueva Funcionalidad (Feature)
 
 **En la terminal ejecutar:**
-   
- ```bash
+
+```bash
 ng generate component features/nombre-de-tu-feature/pages/nombre-de-tu-pagina
 ```
 
 ### 2. Añadir un Componente Compartido (Shared)
 
 **En la terminal ejecutar:**
-   
- ```bash
+
+```bash
 ng generate component shared/components/nombre-tu-componente --standalone
 ```
 
 ### 3. Añadir un Servicio Core (Singleton)
+
 **En la terminal ejecutar:**
-   
- ```bash
+
+```bash
 ng generate service core/services/nombre-tu-servicio
 ```
 
@@ -155,10 +160,10 @@ ng generate service core/services/nombre-tu-servicio
 
 ## 🧪 Pruebas
 
-* **Frameworks:** Karma (ejecutor) y Jasmine (biblioteca de aserciones).
-* **Utilidades:** `@angular/core/testing` (`TestBed`, `ComponentFixture`) para pruebas de componentes.
-* **Ubicación:** Archivos `.spec.ts` co-localizados con el código que prueban.
-* **Ejecucion de pruebas**
+- **Frameworks:** Karma (ejecutor) y Jasmine (biblioteca de aserciones).
+- **Utilidades:** `@angular/core/testing` (`TestBed`, `ComponentFixture`) para pruebas de componentes.
+- **Ubicación:** Archivos `.spec.ts` co-localizados con el código que prueban.
+- **Ejecucion de pruebas**
 
 ```Bash
 npm run test:ci
@@ -166,11 +171,10 @@ npm run test:ci
 
 🔗 **Ver:** [`docs/05-testing-strategy.md`](./_docs/05-testing-strategy.md) para ver más detallado el proceso de pruebas.
 
-
 ## ⚙️ Variables de Entorno
 
-* Utiliza los archivos en `src/environments/` (`environment.ts`, `environment.prod.ts`).
-* Angular CLI gestiona el reemplazo de archivos según la configuración de build.
+- Utiliza los archivos en `src/environments/` (`environment.ts`, `environment.prod.ts`).
+- Angular CLI gestiona el reemplazo de archivos según la configuración de build.
 
 🔗 **Ver:** [`docs/07-environment-variables.md`](./_docs/07-environment-variables.md)
 
@@ -179,3 +183,64 @@ npm run test:ci
 Este proyecto se distribuye bajo los términos de la licencia corporativa de **GRUPO ASD S.A.S.**
 Revisa el archivo `LICENSE` para más detalles.
 Copyright (c) 2025, GRUPO ASD S.A.S. Todos los derechos reservados.
+
+## 🧪 API Mock con `json-server`
+
+Este proyecto puede funcionar sin un backend real gracias a [`json-server`](https://github.com/typicode/json-server), ideal para pruebas locales o desarrollo rápido.
+
+### 📦 Instalación de `json-server`
+
+Si no lo tienes instalado globalmente:
+
+```bash
+npm install -g json-server
+```
+
+O como dependencia local (opcional):
+
+```bash
+npm install json-server --save-dev
+```
+
+### 🗂 Estructura esperada del archivo `db.json`
+
+Crea un archivo en la raíz del proyecto llamado `db.json` con el siguiente contenido:
+
+```json
+{
+  "projects": [
+    {
+      "id": "1",
+      "nombre": "Proyecto de ejemplo",
+      "descripcion": "Este es un proyecto mock",
+      "fechaInicio": "2023-01-01",
+      "fechaEntrega": "2023-03-01",
+      "estado": "en progreso"
+    }
+  ]
+}
+```
+
+### 🚀 Ejecutar el servidor `json-server`
+
+Desde la raíz del proyecto:
+
+```bash
+json-server --watch db.json --port 3000
+```
+
+Esto iniciará un servidor REST en:
+
+```
+http://localhost:3000/projects
+```
+
+### ⚙️ Configuración del Frontend
+
+Asegúrate de que tu Angular consuma esta API modificando el `ProjectService` o equivalente, así:
+
+```ts
+private baseUrl = 'http://localhost:3000/projects';
+```
+
+Esto te permitirá hacer pruebas completas de creación, lectura, edición y eliminación de proyectos sin necesidad de un backend real.
